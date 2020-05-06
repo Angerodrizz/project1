@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Books
+{% endblock %}
+       
+       
+{% block main %}
+
+<!-- FORM-->
+
+<div class='tab text-center bg-light'>
+    {% if dbdata %}
+    <table class="table table-bordered table-dark">
+        <thead>
+          <tr class="text2">
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Year</th>
+            <th scope="col">isbn</th>
+            <th scope="col">Total Reviews</th>
+            <th scope="col">Total Rating</th>
+            <th scope="col">Average Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in dbdata %}
+          <tr class="text2">
+            <th class="bg-success">{{i[1]}}</th>
+            <td class="bg-success">{{i[2]}}</td>
+            <td class="bg-success">{{i[3]}}</td>
+            <td class="bg-success">{{i[0]}}</td>
+            <td class="bg-success">{{apidata['books'][0]['work_reviews_count']}}</td>
+            <td class="bg-success">{{apidata['books'][0]['work_ratings_count']}}</td>
+            <td class="bg-success">{{apidata['books'][0]['average_rating']}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {%endif %}
+</div>
+
+<!-- REVIEW FORM -->
+<div class='conta bg-light'>
+<form method="POST">
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Please, leave your review (✿◠‿◠) </label>
+      <div class="col-sm-10">
+        <input type="text" name="review" class="form-control" id="inputEmail3">
+      </div>
+    </div>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Leave your rating ( ❛ ᴗ ❛ )</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" name='rating' type="radio" id="gridRadios1" value="1" checked>
+            <label class="form-check-label" for="gridRadios1">
+              1
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name='rating' id="gridRadios2" value="2">
+            <label class="form-check-label" for="gridRadios2">
+              2
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="rating" id="gridRadios3" value="3">
+            <label class="form-check-label" for="gridRadios3">
+              3
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name='rating' id="gridRadios4" value="4">
+            <label class="form-check-label" for="gridRadios2">
+              4
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name='rating' id="gridRadios5" value="5">
+            <label class="form-check-label" for="gridRadios2">
+              5
+            </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+  </div>
+
+  <!-- REVIEWS DONE -->
+  <div class='bg-light'>
+    {%if items%}
+    <h2 class='text-center'>Book Reviews</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Username</u></th>
+          <th>ISBN</th>
+          <th>Rating</th>
+          <th>Review</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for i in items %}
+        <tr>
+          <td>{{i[3]}}</td>
+          <td> {{i[0]}}</td>
+          <td>{{i[2]}}</td>
+          <td>{{i[1]}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+        <h1 class='text-center'>We have not found reviews yet</h1>
+    {%endif %}
+  </div>
+
+
+{% endblock %}
+  

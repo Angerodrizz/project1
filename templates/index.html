@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block head %}
+
+<div class="header text-center title">
+    <h4>WELCOME!<h4>
+
+
+    <div>
+      <div class="row">
+      <div class="col-sm">
+        {% if not session.user %}
+        <a href='/register'>
+          <button type="button" class="btn btn-lg btn-primary">Register</button>
+        </a>
+        </div>
+      <div class="col-sm">
+        <a href='/login'>
+          <button type="button" class="btn btn-lg btn-primary">Log In</button>
+        </a>
+        </div>
+        {% endif %}
+  </div>
+</div>
+    
+  </div> 
+  
+
+{% endblock %}
+{% block content %}
+  
+{% endblock %}

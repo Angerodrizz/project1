@@ -1,0 +1,9 @@
+Flask
+Flask-Session
+psycopg2-binary
+SQLAlchemy
+Jinja2
+requests
+Werkzeug
+Json
+Os
